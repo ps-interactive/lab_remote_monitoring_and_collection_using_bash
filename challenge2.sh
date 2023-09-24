@@ -1,4 +1,15 @@
-p=sr1(IP(dst="172.31.24.10")/ICMP()/"VGhpcyBpcyB0aGUgZG9tYWluIGFkbWluIHBhc3N3b3JkOiBnczJKODJ5dVVrc24xMkQ==")
-p.show()
+// netsniff command
 
-send(IP(src="172.31.24.22", dst="172.31.24.10", ttl=128)/ICMP(type=0)/"VGhpcyBpcyB0aGUgZG9tYWluIGFkbWluIHBhc3N3b3JkOiBnczJKODJ5dVVrc24xMkQ==")
+sudo netsniff-ng -i ens5 –o /tmp/ -S 2MiB -P “SEC_” -s &
+
+// inspecting packet commands
+
+cat pcapfilename
+
+sudo tcpdump -ttttnnr pcapfilename
+
+tcpdump -qns 0 -A -r pcapfilename
+
+// base64 decoding
+
+echo texttodecodehere | base64 --decode
